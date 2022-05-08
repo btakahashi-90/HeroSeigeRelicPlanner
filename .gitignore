@@ -1,2 +1,3 @@
 hsrp/hsrp/settings.py
 *.pyc
+*.png

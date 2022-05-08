@@ -11,3 +11,5 @@ As of 5/7/2022 - Using:
 [postgreSQL 14.2](https://www.postgresql.org/)
 
 The settings.py file for the Django project is NOT included, you will want to set-up your own database if you want to test this project.
+
+PNG/IMAGE/ICON Files are not included. Make your own and put them in hsrp/builder/static/builder/images (or don't, up to you). Names are stored "in" the Relic DB Model.
