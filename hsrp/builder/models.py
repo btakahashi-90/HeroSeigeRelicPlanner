@@ -27,7 +27,7 @@ class Relic(models.Model):
     # Name of the intended icon file. Should be stored in static/builder/images
     icon = models.CharField(null=True, blank=True, max_length=256)
     # Associated relic to the stat increase. Some relics DO HAVE THE SAME STAT INCREASES.
-    stat_increases = models.ForeignKey(StatIncreases, null=True, on_delete=models.DO_NOTHING)
+    stat_increases = models.ForeignKey(StatIncreases, null=True, blank=True, on_delete=models.DO_NOTHING)
 
 class Build(models.Model):
     # Name of the build, easier to identify than by PK
