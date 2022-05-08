@@ -1,0 +1,8 @@
+li a {
+    color:green;
+}
+
+/* Used if there was an image in the images folder named background.gif */
+/* body {
+    background: white url("images/background.gif") no-repeat;
+} */
