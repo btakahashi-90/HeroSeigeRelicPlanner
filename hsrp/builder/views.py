@@ -4,7 +4,13 @@ from .models import Relic, Build
 
 # Create your views here.
 def index(request):
-    return render(request, 'builder/index.html')
+    context = {}
+    
+    builds = Build.objects.all()
+
+    context['builds'] = builds
+    
+    return render(request, 'builder/index.html', context)
 
 def relics(request):
     context = {}

@@ -1,2 +1,12 @@
 <h1>Builder Home Page</h1>
 <a href="relics/">View All Relics</a>
+{% if builds %}
+<p>Current Builds:</p>
+<ul>
+    {% for build in builds %}
+    <div>Build {{ build.id }}</div>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No Builds available.</p>
+{% endif %}

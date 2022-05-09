@@ -44,7 +44,7 @@ class Build(models.Model):
     # Relic count just to have something, not really a necessity. Can be used to filter "in progress" vs "complete"
     relic_count = models.PositiveSmallIntegerField(null=False, default=0)
     # Many to many relation to Relic, in DB will create a new simple table to find Builds based on Relic or Relics based on a Build
-    relics = models.ManyToManyField(Relic)
+    relics = models.ManyToManyField(Relic, blank=True)
 
     def __str__(self):
         return self.name
