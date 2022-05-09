@@ -4,7 +4,7 @@
 <p>Current Builds:</p>
 <ul>
     {% for build in builds %}
-    <div>Build {{ build.id }}</div>
+    <li><a href="{% url 'builder:build_edit' build.id %}">{{ build.name }}</a></li>
     {% endfor %}
 </ul>
 {% else %}

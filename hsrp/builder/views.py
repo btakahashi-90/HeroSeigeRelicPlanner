@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import Relic, Build
 
@@ -9,7 +9,7 @@ def index(request):
     builds = Build.objects.all()
 
     context['builds'] = builds
-    
+
     return render(request, 'builder/index.html', context)
 
 def relics(request):
@@ -20,3 +20,12 @@ def relics(request):
     context['relics'] = relics
 
     return render(request, 'builder/relics.html', context)
+
+def build_edit(request, build_id):
+    context = {}
+
+    build = get_object_or_404(Build, pk=build_id)
+
+    context['build'] = build
+
+    return render(request, 'builder/build_edit.html', context)
