@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib import admin
 
 # NOTE: Passive and Active effects will NOT be displayed in the Build since they're stored in the description.
 # If you wish to display these effects separately (and efficiently...), add them as columns in Relic or StatIncreases
@@ -16,6 +17,8 @@ class StatIncreases(models.Model):
     energy = models.PositiveSmallIntegerField(null=True, default=0)
     # Armor % increase, stored as positive integer
     armor = models.PositiveSmallIntegerField(null=True, default=0)
+    # Move speed increase, stored as positive integer
+    move_speed = models.PositiveSmallIntegerField(null=True, default=0)
 
 class Relic(models.Model):
     # Name of the relic, easier to identify than by PK
@@ -29,6 +32,12 @@ class Relic(models.Model):
     # Associated relic to the stat increase. Some relics DO HAVE THE SAME STAT INCREASES.
     stat_increases = models.ForeignKey(StatIncreases, null=True, blank=True, on_delete=models.DO_NOTHING)
 
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['name']
+
 class Build(models.Model):
     # Name of the build, easier to identify than by PK
     name = models.CharField(null=False, blank=False, max_length=128)
@@ -36,6 +45,9 @@ class Build(models.Model):
     relic_count = models.PositiveSmallIntegerField(null=False, default=0)
     # Many to many relation to Relic, in DB will create a new simple table to find Builds based on Relic or Relics based on a Build
     relics = models.ManyToManyField(Relic)
+
+    def __str__(self):
+        return self.name
 
 # What components make up a "Relic Build" in Hero Seige?
 # A "Holder" for the relics, this will be the "Hero" but we don't really care about its stats, it's just a container

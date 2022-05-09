@@ -1,0 +1,18 @@
+#lazy_wrapper{
+    padding-left: 2rem;
+}
+
+#relics_wrapper{
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+}
+
+#relics_wrapper > div:nth-child(6n + 1),
+#relics_wrapper > div:nth-child(6n + 2),
+#relics_wrapper > div:nth-child(6n + 3){
+    background: #eeeeee
+}
+
+#relics_wrapper > div{
+    border: solid 0.1rem grey;
+}

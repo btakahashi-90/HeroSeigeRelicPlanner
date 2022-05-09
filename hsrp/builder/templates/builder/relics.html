@@ -1,0 +1,35 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'builder/relics.css' %} ">
+
+<div id="lazy_wrapper">
+    <h1>Relic Page</h1>
+
+    <div id="relics_wrapper">
+        {% for relic in relics %}
+            <div class="relic_name">{{ relic.name }}</div>
+            <div class="relic_description">{{ relic.description }}</div>
+            <div class="relic_stats">
+                {% if relic.stat_increases %}
+                    {% if relic.stat_increases.move_speed > 0 %}
+                        <div>Movement Speed: {{ relic.stat_increases.move_speed }}</div>
+                    {% endif %}
+                    {% if relic.stat_increases.attack_speed > 0 %}
+                        <div>Attack Speed: {{ relic.stat_increases.attack_speed }}%</div>
+                    {% endif %}
+                    {% if relic.stat_increases.strength > 0 %}
+                        <div>Strength: {{ relic.stat_increases.strength }}%</div>
+                    {% endif %}
+                    {% if relic.stat_increases.stamina > 0 %}
+                        <div>Stamina: {{ relic.stat_increases.stamina }}%</div>
+                    {% endif %}
+                    {% if relic.stat_increases.energy > 0 %}
+                        <div>Energy: {{ relic.stat_increases.energy }}%</div>
+                    {% endif %}
+                    {% if relic.stat_increases.armor > 0 %}
+                        <div>Armor: {{ relic.stat_increases.armor }}%</div>
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
