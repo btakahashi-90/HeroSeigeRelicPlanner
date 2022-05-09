@@ -1,0 +1,16 @@
+#lazy_wrapper{
+    padding: 0px 2rem;
+}
+
+#relics_wrapper > div[class*="relic_container"]{
+    display: grid;
+    grid-template-columns: 100px 1fr 2fr 1fr;
+}
+
+div[class*="relic_container"]:nth-child(odd){
+    background: #eeeeee
+}
+
+div[class*="relic_container"] > div{
+    border: solid 0.1rem grey;
+}

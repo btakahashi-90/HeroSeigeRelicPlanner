@@ -1,15 +1,12 @@
-/*
-    Used for search/filter functionality of the relics page.
-    Because the page layouts and overall functionality are different, it's rewritten in both places.
-*/
+console.log("In the editor.js file...")
 
 function run_filters(){
     console.log("Running filters for Description Contains: " + $("#description_filter option:selected").text() + " and Stats Inlucde: " + $("#stat_filter option:selected").text());
 
     // quick short circuit for both set to All
     if($("#description_filter option:selected").text() === "All" && $("#stat_filter option:selected").text() === "All"){
-        // unhide everything under the relics wrapper
-        $("#relics_wrapper").children().css("display", "");
+        // unhide all relic containers under the relic wrapper
+        $("#relics_wrapper").children("div[class^='relic_container']").css("display", "");
         // get out
         return void 0;
     }
@@ -27,17 +24,13 @@ function run_filters(){
 
         // now we do things for EACH DESCRIPTION
         descriptions.each(function(){
-            // if selected "value"/text found in description, unhide "previous, current, and next" DOM items (name, description, stat increases)
+            // if selected "value"/text found in description, unhide the parent container
             if(($(this).text().includes(selected_text))){
-                $(this).prev(".relic_name").css("display", "");
-                $(this).css("display", "");
-                $(this).next(".relic_stats").css("display", "");
+                $(this).closest("div[class^='relic_container']").css("display", "");
             }
             // else make sure it's hidden
             else{
-                $(this).prev(".relic_name").css("display", "none");
-                $(this).css("display", "none");
-                $(this).next(".relic_stats").css("display", "none");
+                $(this).closest("div[class^='relic_container']").css("display", "none");
             }
         })
     }
@@ -51,17 +44,13 @@ function run_filters(){
 
         // now we do things for EACH wrapper
         stat_wrappers.each(function(){
-            // if selected "value"/text found in stat_wrapper children class list, unhide "previous, previous, and current" DOM items (name, description, stat increases)
+            // if selected "value"/text found in stat_wrapper children class list, unhide parent container
             if(($(this).children().hasClass(selected_text))){
-                $(this).prev(".relic_description").prev(".relic_name").css("display", "");
-                $(this).prev(".relic_description").css("display", "");
-                $(this).css("display", "");
+                $(this).closest("div[class^='relic_container']").css("display", "");
             }
             // else make sure it's hidden
             else{
-                $(this).prev(".relic_description").prev(".relic_name").css("display", "none");
-                $(this).prev(".relic_description").css("display", "none");
-                $(this).css("display", "none");
+                $(this).closest("div[class^='relic_container']").css("display", "none");
             }
         })
     }
@@ -77,15 +66,11 @@ function run_filters(){
         descriptions.each(function(){
             // if selected "value"/text found in description AND relic_stats children contain the appropriate class
             if(($(this).text().includes(description_text)) && ($(this).next(".relic_stats").children().hasClass(stats_text))){
-                $(this).prev(".relic_name").css("display", "");
-                $(this).css("display", "");
-                $(this).next(".relic_stats").css("display", "");
+                $(this).closest("div[class^='relic_container']").css("display", "");
             }
             // else make sure it's hidden
             else{
-                $(this).prev(".relic_name").css("display", "none");
-                $(this).css("display", "none");
-                $(this).next(".relic_stats").css("display", "none");
+                $(this).closest("div[class^='relic_container']").css("display", "none");
             }
         })
     }
