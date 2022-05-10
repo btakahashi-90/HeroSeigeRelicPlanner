@@ -1,0 +1,6 @@
+<h1>New Build</h1>
+<form action="{% url 'builder:new_build' %}" method="post">
+    {% csrf_token %}
+    Name: <input type="text" name="build_name">
+    <input type="submit" value="Start Build">
+</form>

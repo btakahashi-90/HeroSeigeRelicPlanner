@@ -3,6 +3,49 @@
 
 <h1>Editing build: {{ build.name }}</h1>
 
+<div id="build_wrapper">
+    <div id="build_relics">
+        <form action="{% url 'builder:build_edit' build.id %}" method="post">
+            {% csrf_token %}
+            <fieldset id="build_relic_list">
+                {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+                {% for relic in build.relics.all %}
+                    <div class="{{ relic.id }}">
+                        {{ relic.name }}<input type="hidden" name="relic_{{ relic.id }}" id="{{ relic.id }}" value="{{ relic.id }}" readonly>
+                        <button type="button" class="{{ relic.id }} remove">Remove Relic</button>
+                    </div>
+                {% endfor %}
+            </fieldset>
+            <input type="submit" value="Save Build">
+        </form>
+    </div>
+    <div id="totals">
+        <div id="relic_count">
+
+        </div>
+        <div id="stat_increases">
+            <div id="increased_msp">
+                
+            </div>
+            <div id="increased_asp">
+                
+            </div>
+            <div id="increased_str">
+                
+            </div>
+            <div id="increased_sta">
+                
+            </div>
+            <div id="increased_ene">
+                
+            </div>
+            <div id="increased_arm">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="lazy_wrapper">
     <h3 style="text-align: center">Relic List</h3>
     Description Includes:
@@ -33,22 +76,22 @@
             <div class="relic_stats">
                 {% if relic.stat_increases %}
                     {% if relic.stat_increases.move_speed > 0 %}
-                        <div class="msp">Movement Speed: {{ relic.stat_increases.move_speed }}</div>
+                        <div class="msp" value="{{ relic.stat_increases.move_speed }}">Movement Speed: {{ relic.stat_increases.move_speed }}</div>
                     {% endif %}
                     {% if relic.stat_increases.attack_speed > 0 %}
-                        <div class="asp">Attack Speed: {{ relic.stat_increases.attack_speed }}%</div>
+                        <div class="asp" value="{{ relic.stat_increases.attack_speed }}">Attack Speed: {{ relic.stat_increases.attack_speed }}%</div>
                     {% endif %}
                     {% if relic.stat_increases.strength > 0 %}
-                        <div class="str">Strength: {{ relic.stat_increases.strength }}%</div>
+                        <div class="str" value="{{ relic.stat_increases.strength }}">Strength: {{ relic.stat_increases.strength }}%</div>
                     {% endif %}
                     {% if relic.stat_increases.stamina > 0 %}
-                        <div class="sta">Stamina: {{ relic.stat_increases.stamina }}%</div>
+                        <div class="sta" value="{{ relic.stat_increases.stamina }}">Stamina: {{ relic.stat_increases.stamina }}%</div>
                     {% endif %}
                     {% if relic.stat_increases.energy > 0 %}
-                        <div class="ene">Energy: {{ relic.stat_increases.energy }}%</div>
+                        <div class="ene" value="{{ relic.stat_increases.energy }}">Energy: {{ relic.stat_increases.energy }}%</div>
                     {% endif %}
                     {% if relic.stat_increases.armor > 0 %}
-                        <div class="arm">Armor: {{ relic.stat_increases.armor }}%</div>
+                        <div class="arm" value="{{ relic.stat_increases.armor }}">Armor: {{ relic.stat_increases.armor }}%</div>
                     {% endif %}
                 {% endif %}
             </div>

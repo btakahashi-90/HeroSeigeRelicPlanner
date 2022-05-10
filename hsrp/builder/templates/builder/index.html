@@ -1,5 +1,7 @@
 <h1>Builder Home Page</h1>
-<a href="relics/">View All Relics</a>
+<div><a href="relics/">View All Relics</a></div>
+<br>
+<div><a href="{% url 'builder:new_build'%}"><button type="button">Add Build</button></a></div>
 {% if builds %}
 <p>Current Builds:</p>
 <ul>

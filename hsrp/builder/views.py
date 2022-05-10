@@ -27,7 +27,27 @@ def build_edit(request, build_id):
     build = get_object_or_404(Build, pk=build_id)
     relics = get_list_or_404(Relic)
 
+    if request.method == 'POST':
+        error_message = ""
+        build.relics.clear()
+        for key in request.POST:
+            if "relic" in key:
+                try:
+                    build.relics.add(Relic.objects.get(pk=int(request.POST[key])))
+                except:
+                    error_message += key + " not found.\n"
+        if len(error_message) > 0:
+            context["error_message"] = error_message
+            
     context['build'] = build
     context['relics'] = relics
 
     return render(request, 'builder/build_edit.html', context)
+
+def new_build(request):
+    if request.method == 'POST':
+        new_build = Build(name=request.POST["build_name"])
+        new_build.save()
+        return build_edit(request, new_build.id)
+
+    return render(request, 'builder/new_build.html')

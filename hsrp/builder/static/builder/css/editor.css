@@ -1,8 +1,38 @@
+#build_wrapper{
+    display: grid;
+    padding: 0px 2rem;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 1rem;
+}
+
+#build_relic_list{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* allow 3 relics per row */
+    grid-gap: 1rem;
+}
+
+#build_relic_list > div{
+    border: solid 0.1rem grey;
+    background-color: #eeeeee;
+}
+
+.remove{
+    float: right;
+}
+
+#totals{
+    border: solid 0.1rem grey;
+}
+
+#relic_count{
+    border-bottom: solid 0.1rem grey;
+}
+
 #lazy_wrapper{
     padding: 0px 2rem;
 }
 
-#relics_wrapper > div[class*="relic_container"]{
+#relics_wrapper > div[class^="relic_container"]{
     display: grid;
     grid-template-columns: 100px 1fr 2fr 1fr;
 }
