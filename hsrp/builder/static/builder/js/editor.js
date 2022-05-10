@@ -7,6 +7,8 @@ function run_filters(){
     if($("#description_filter option:selected").text() === "All" && $("#stat_filter option:selected").text() === "All"){
         // unhide all relic containers under the relic wrapper
         $("#relics_wrapper").children("div[class^='relic_container']").css("display", "");
+        // don't forget to rehide the selected ones...
+        hide_initial_relics();
         // get out
         return void 0;
     }
@@ -74,6 +76,8 @@ function run_filters(){
             }
         })
     }
+    // don't forget to rehide the selected relics...
+    hide_initial_relics();
 }
 
 function add_to_build(){
