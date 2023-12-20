@@ -1,4 +1,8 @@
-# HeroSeigeRelicPlanner
+# A standalone version without Django, Python, or database has been created [here](https://github.com/btakahashi-90/webpages/tree/main/hsrp)
+
+# Please note this project is no longer under development.
+
+## HeroSeigeRelicPlanner
 
 Testing the Repo.
 
